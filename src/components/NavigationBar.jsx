@@ -11,7 +11,6 @@ class NavigationBar extends Component {
                                 <Navigation>
                                     <Link >
                                        Home
-                                       <div></div>
                                     </Link>
                                     <Link >Products</Link>
                                     <Link >Blog</Link>
