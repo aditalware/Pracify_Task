@@ -6,8 +6,10 @@ import {Button,Card,CardText,CardTitle} from 'react-mdl'
 function ReturnCard(props){
     return(
         <div >
-        <img src={props.id==1?"/images/Group207.png":"/images/Group205.png"}/>
-      </div>
+          <img height="100" width="100" src={"/images/Group123.png"}/><br/>
+          <h5>{props.element.headline}</h5><br/>
+          <p>{props.element.info}</p>
+       </div>
     )
 }
 
@@ -22,12 +24,11 @@ function ReturnPresentedBy(props){
 function ReturnBlogs(props){
     return(
         <Card >
-            <CardTitle style={{backgroundImage:`url(/images/Group${props.id}.png)`}}/>
-            <h5>Blog Post One</h5>
+            <CardTitle style={{backgroundImage:`url(/images/Group${props.element.id}.png)`}}/>
+            <h5>Blog Post {props.element.headline}</h5>
             <CardText>
-                Lorem ipsum dolor sit amet, <br/>
-                consectetur adipiscing elit, sed<br/>
-                do eiusmod.<br/><br/>
+                {props.element.info}
+                <br/>
 
                  <button>
                     Read More
@@ -42,9 +43,9 @@ class Main extends Component {
     constructor(props){
         super(props);
         this.state={
-            cards:[1,2,1,1],
+            cards:[{id:1,headline:"Organic Food",info:"Away from chemicals, enjoy the natural taste of nature"},{id:2,headline:"Organic Medicines",info:"Natural extracts from medicinal plants ,capable of healing various diseases"},{id:3,headline:"Organic Cosmetics",info:"Our skin needs natural nourishment that several of nature's extracts provide"},{id:4,headline:"Organic Soaps",info:"When it comes to skin, you don't have a choice to compromise with ehat nature provides"}],
             presentedBy:[1,2,3,2,1],
-            blogs:[1,2,3]
+            blogs:[{id:1,headline:"One",info:"Tulsi and Neem Soap, overwhelmed with freshness"},{id:2,headline:"Two",info:"Coconut Body Lotion with mint extracts"},{id:3,headline:"Three",info:"Grapes and Pear hand wash, a perfect helathy solution"}]
         }
     }
 
@@ -68,8 +69,8 @@ class Main extends Component {
                           <h3>Healthy life with</h3>
                           <h1>Nature Organic</h1>
                           <p>
-                              Vegetables are the edible parts of a plant<br/>
-                              that is used in cooking or can be eaten now
+                              Nature has hid its vast treasure on the land<br/>
+                              We bring those extracts for a natural touch!
                           </p>
                           <div>
                               <Button ripple>
@@ -95,13 +96,13 @@ class Main extends Component {
                           <img src="/images/Group114.png"/>
                           <h3>Welcome to Nature</h3>
                           <div>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br/>
-                           incididunt ut labore et dolore magna aliqua.
+                          Find yourself with refreshing and resplendent natural products <br/>
+                           A way to relive nature's beauty through its products.
                           </div>
                       </div>
 
                       <div className="div-2-2">
-                         { this.state.cards.map((c)=><ReturnCard id={c}/>)}
+                         { this.state.cards.map((c)=><ReturnCard element={c}/>)}
                       </div>
 
                 </div>
@@ -109,8 +110,7 @@ class Main extends Component {
 
                 <div className="div-all div-3">
                            <h3>Proudly Presented By</h3>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br/>
-                              incididunt ut labore et dolore magna aliqua.</p>
+                           <p>Under the support and due gratitude of our sponsors and people, we put forward a token of thanks</p>
                               <div className="div-3-1">
                                   { this.state.presentedBy.map((c)=><ReturnPresentedBy id={c}/>)}
                               </div>
@@ -146,10 +146,11 @@ class Main extends Component {
 
                 <div className="div-all div-5">
                         <img src="/images/Group134.png"/>
-                      
+                        <img src="/images/Group134.png"/>
+
                         <h3>Subscribe to our NewsLetter</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br/>
-                            incididunt ut labore et dolore magna aliqua.
+                        <p>Want to get daily updates about our products, services, and offers we provide<br/>
+                           Our newsletter comes with an additional health and fitness column.
                         </p>
                         <div>
                           <input type="text" placeholder="Enter your Email Address"/>
@@ -166,11 +167,10 @@ class Main extends Component {
                     <img src="/images/Group114.png"/>
                      <h3>Read Our Blog</h3>
                      <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br/>
-                    incididunt ut labore et dolore magna aliqua.
+                     Our blog takes you through the wonderful everlasting health and natural products that are best suited for your body!
                      </p>
                      <div>
-                         {this.state.blogs.map((c)=><ReturnBlogs id={c}/>)}
+                         {this.state.blogs.map((c)=><ReturnBlogs element={c}/>)}
                      </div>
 
                 </div>
